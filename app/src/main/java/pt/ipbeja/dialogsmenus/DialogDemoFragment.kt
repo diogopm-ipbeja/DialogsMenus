@@ -1,11 +1,11 @@
 package pt.ipbeja.dialogsmenus
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import pt.ipbeja.dialogsmenus.databinding.DialogDemoFragmentBinding
 
@@ -26,10 +26,10 @@ class DialogDemoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         items = resources.getStringArray(R.array.dialog_items)
 
-        binding.basic.setOnClickListener(this::onBasicClicked)
-        binding.items.setOnClickListener(this::onItemsDialogClicked)
-        binding.singleChoice.setOnClickListener(this::onSingleChoiceDialogClicked)
-        binding.multiChoice.setOnClickListener(this::onMultiChoiceDialogClicked)
+        binding.basic.setOnClickListener(::onBasicClicked)
+        binding.items.setOnClickListener(::onItemsDialogClicked)
+        binding.singleChoice.setOnClickListener(::onSingleChoiceDialogClicked)
+        binding.multiChoice.setOnClickListener(::onMultiChoiceDialogClicked)
     }
 
     private fun onBasicClicked(view: View) {
@@ -46,7 +46,7 @@ class DialogDemoFragment : Fragment() {
 
     private fun onItemsDialogClicked(view: View) {
         AlertDialog.Builder(requireContext())
-            .setTitle("Items dialog")
+            .setTitle("Items")
             // .setMessage("A message") // Não podemos usar setMessage neste caso!
             .setItems(items) { _, which ->
                 showSnackBar("Selected: ${items[which]}")
@@ -61,7 +61,7 @@ class DialogDemoFragment : Fragment() {
         var selected: String = items[default]
 
         AlertDialog.Builder(requireContext())
-            .setTitle("A title")
+            .setTitle("Single Choice")
             .setSingleChoiceItems(items, default) { _, which ->
                 selected = items[which]
                 showSnackBar("Selected: $selected")
@@ -75,14 +75,21 @@ class DialogDemoFragment : Fragment() {
         val checkedArray = BooleanArray(items.size) // A Boolean array with the same size as items
 
         AlertDialog.Builder(requireContext())
-            .setTitle("A title")
+            .setTitle("Multi Choice")
             .setMultiChoiceItems(items, checkedArray) { _, which, selected ->
                 // We receive [which] item was clicked, and if it was [selected] (Boolean)
                 checkedArray[which] = selected
             }
             .setPositiveButton("Finished") { _, _ ->
-                val message =
-                    items.filterIndexed { index, s -> checkedArray[index] }.joinToString(", ")
+                val message = if (checkedArray.any { it }) {
+                    items
+                        .filterIndexed { index, s -> checkedArray[index] }
+                        .joinToString(", ")
+                } else {
+                    "No items selected"
+                }
+
+
                 showSnackBar(message)
             }
             .show()

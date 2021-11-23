@@ -1,6 +1,5 @@
 package pt.ipbeja.dialogsmenus
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment

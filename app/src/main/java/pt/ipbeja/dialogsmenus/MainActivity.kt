@@ -1,10 +1,10 @@
 package pt.ipbeja.dialogsmenus
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.activity, menu)
-        return super.onCreateOptionsMenu(menu)
+        return true // We want to display this menu
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
