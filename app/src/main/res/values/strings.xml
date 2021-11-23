@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">DialogsMenus</string>
+
+    <string-array name="dialog_items">
+        <item>One</item>
+        <item>Two</item>
+        <item>Three</item>
+    </string-array>
+</resources>

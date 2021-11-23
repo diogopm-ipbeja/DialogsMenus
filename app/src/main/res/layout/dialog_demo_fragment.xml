@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DialogDemoFragment"
+    android:orientation="vertical"
+    android:paddingHorizontal="72dp"
+    android:gravity="center">
+
+    <Button
+        android:id="@+id/basic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Basic"/>
+
+    <Button
+        android:id="@+id/items"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Items"/>
+
+
+
+    <Button
+        android:id="@+id/singleChoice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Single choice"/>
+
+
+
+    <Button
+        android:id="@+id/multiChoice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Multiple choice"/>
+
+
+
+
+
+</LinearLayout>
